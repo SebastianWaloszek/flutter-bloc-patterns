@@ -1,11 +1,11 @@
 import 'package:example/src/post/model/post.dart';
 
 class PostDetails extends Post {
-  final String body;
+  final String? body;
 
   PostDetails({
-    int id,
-    String title,
+    int? id,
+    String? title,
     this.body,
   }) : super(
           id: id,
@@ -14,9 +14,9 @@ class PostDetails extends Post {
 
   factory PostDetails.fromJson(dynamic json) {
     return PostDetails(
-      id: json['id'] as int,
-      title: json['title'] as String,
-      body: json['body'] as String,
+      id: json['id'] as int?,
+      title: json['title'] as String?,
+      body: json['body'] as String?,
     );
   }
 }

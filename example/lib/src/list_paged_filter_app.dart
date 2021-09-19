@@ -35,7 +35,7 @@ class _PhotosPage extends StatefulWidget {
 
 class _PhotosPageState extends State<_PhotosPage> {
   final _myAlbum = const Album(id: 1);
-  PagedListFilterBloc<Photo, Album> _photosBloc;
+  late PagedListFilterBloc<Photo, Album> _photosBloc;
 
   @override
   void initState() {

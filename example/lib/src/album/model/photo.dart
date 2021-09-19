@@ -1,8 +1,8 @@
 class Photo {
-  final int id;
-  final String title;
-  final String url;
-  final String thumbnailUrl;
+  final int? id;
+  final String? title;
+  final String? url;
+  final String? thumbnailUrl;
 
   Photo({
     this.id,
@@ -13,10 +13,10 @@ class Photo {
 
   factory Photo.fromJson(dynamic json) {
     return Photo(
-      id: json['id'] as int,
-      title: json['title'] as String,
-      url: json['url'] as String,
-      thumbnailUrl: json['thumbnailUrl'] as String,
+      id: json['id'] as int?,
+      title: json['title'] as String?,
+      url: json['url'] as String?,
+      thumbnailUrl: json['thumbnailUrl'] as String?,
     );
   }
 }

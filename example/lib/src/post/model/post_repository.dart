@@ -25,11 +25,7 @@ class FilterPostRepository implements FilterListRepository<Post, User> {
 
   @override
   Future<List<Post>> getBy(User user) {
-    if (user == null || user.id == null) {
-      return _getPostsFromUrl(_postsUrl);
-    } else {
-      return _getPostsFromUrl('$_postsUrl?userId=${user.id}');
-    }
+    return _getPostsFromUrl('$_postsUrl?userId=${user.id}');
   }
 }
 
@@ -41,7 +37,7 @@ class PagedPostRepository implements PagedListRepository<Post> {
 
 class PostDetailsRepository implements DetailsRepository<PostDetails, int> {
   @override
-  Future<PostDetails> getById(int id) async {
+  Future<PostDetails?> getById(int id) async {
     final response = await http.get(Uri.parse('$_postsUrl/$id'));
 
     if (response.statusCode == HttpStatus.notFound) {

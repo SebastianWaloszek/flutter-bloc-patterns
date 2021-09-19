@@ -4,7 +4,7 @@ class ErrorMessage extends StatelessWidget {
   final dynamic error;
 
   const ErrorMessage({
-    Key key,
+    Key? key,
     this.error,
   }) : super(key: key);
 

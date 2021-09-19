@@ -1,6 +1,6 @@
 class Post {
-  final int id;
-  final String title;
+  final int? id;
+  final String? title;
 
   Post({
     this.id,
@@ -9,8 +9,8 @@ class Post {
 
   factory Post.fromJson(dynamic json) {
     return Post(
-      id: json['id'] as int,
-      title: json['title'] as String,
+      id: json['id'] as int?,
+      title: json['title'] as String?,
     );
   }
 }

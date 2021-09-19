@@ -4,12 +4,12 @@ import 'package:flutter_bloc_patterns/view.dart';
 
 class PostsList extends StatelessWidget {
   final List<Post> posts;
-  final VoidCallback onRefresh;
-  final ValueSetter<Post> onPostSelected;
+  final VoidCallback? onRefresh;
+  final ValueSetter<Post>? onPostSelected;
 
   const PostsList(
     this.posts, {
-    Key key,
+    Key? key,
     this.onRefresh,
     this.onPostSelected,
   }) : super(key: key);
@@ -32,17 +32,17 @@ class PostsList extends StatelessWidget {
 
 class PostListItem extends StatelessWidget {
   final Post post;
-  final ValueSetter<Post> onPostSelected;
+  final ValueSetter<Post>? onPostSelected;
 
   const PostListItem(
     this.post, {
     this.onPostSelected,
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) => ListTile(
-        title: Text(post.title),
+        title: Text(post.title!),
         onTap: () {
           onPostSelected?.call(post);
         },

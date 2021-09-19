@@ -31,7 +31,7 @@ class _PostsPage extends StatefulWidget {
 }
 
 class _PostsPageState extends State<_PostsPage> {
-  ListBloc<Post> listBloc;
+  late ListBloc<Post> listBloc;
 
   @override
   void initState() {
@@ -68,16 +68,16 @@ class _PostsPageState extends State<_PostsPage> {
 }
 
 class _PostDetailPage extends StatefulWidget {
-  final int postId;
+  final int? postId;
 
-  const _PostDetailPage(this.postId, {Key key}) : super(key: key);
+  const _PostDetailPage(this.postId, {Key? key}) : super(key: key);
 
   @override
   _PostDetailPageState createState() => _PostDetailPageState();
 }
 
 class _PostDetailPageState extends State<_PostDetailPage> {
-  DetailsBloc<PostDetails, int> detailsBloc;
+  late DetailsBloc<PostDetails, int> detailsBloc;
 
   @override
   void initState() {
@@ -101,7 +101,7 @@ class _PostDetailPageState extends State<_PostDetailPage> {
   }
 
   Widget _showSnackbarAndPopPage(BuildContext context) {
-    WidgetsBinding.instance.addPostFrameCallback((_) {
+    WidgetsBinding.instance!.addPostFrameCallback((_) {
       ScaffoldMessenger.of(context)
           .showSnackBar(
             const SnackBar(
@@ -127,7 +127,7 @@ class _PostDetailPageState extends State<_PostDetailPage> {
 class _PostDetailsContent extends StatelessWidget {
   final PostDetails post;
 
-  const _PostDetailsContent(this.post, {Key key}) : super(key: key);
+  const _PostDetailsContent(this.post, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -137,10 +137,10 @@ class _PostDetailsContent extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Text(post.title, style: Theme.of(context).textTheme.headline6),
+            Text(post.title!, style: Theme.of(context).textTheme.headline6),
             const SizedBox(height: 8),
             Text(
-              post.body,
+              post.body!,
               style: Theme.of(context).textTheme.bodyText2,
               textAlign: TextAlign.justify,
             ),
@@ -174,7 +174,7 @@ class _Router {
             create: (_) => DetailsBloc<PostDetails, int>(
               PostDetailsRepository(),
             ),
-            child: _PostDetailPage(settings.arguments as int),
+            child: _PostDetailPage(settings.arguments as int?),
           ),
         );
       default:

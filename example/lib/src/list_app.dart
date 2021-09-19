@@ -32,7 +32,7 @@ class PostsPage extends StatefulWidget {
 }
 
 class _PostsPageState extends State<PostsPage> {
-  ListBloc<Post> listBloc;
+  late ListBloc<Post> listBloc;
 
   @override
   void initState() {
