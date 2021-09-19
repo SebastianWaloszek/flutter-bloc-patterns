@@ -17,7 +17,7 @@ class PagedFilterPhotoRepository
 
   @override
   Future<List<Photo>> getBy(Page page, Album album) async {
-    final response = await http.get(_buildUrl(page, album));
+    final response = await http.get(Uri.parse(_buildUrl(page, album)));
 
     if (response.statusCode != HttpStatus.ok) {
       throw Exception('Failed to load photos');

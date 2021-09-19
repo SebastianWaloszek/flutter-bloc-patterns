@@ -42,7 +42,7 @@ class PagedPostRepository implements PagedListRepository<Post> {
 class PostDetailsRepository implements DetailsRepository<PostDetails, int> {
   @override
   Future<PostDetails> getById(int id) async {
-    final response = await http.get('$_postsUrl/$id');
+    final response = await http.get(Uri.parse('$_postsUrl/$id'));
 
     if (response.statusCode == HttpStatus.notFound) {
       return null;
@@ -55,7 +55,7 @@ class PostDetailsRepository implements DetailsRepository<PostDetails, int> {
 }
 
 Future<List<Post>> _getPostsFromUrl(String url) async {
-  final response = await http.get(url);
+  final response = await http.get(Uri.parse(url));
 
   if (response.statusCode != HttpStatus.ok) {
     throw Exception('Failed to load post');

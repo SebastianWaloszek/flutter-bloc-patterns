@@ -44,7 +44,7 @@ class _PostsPageState extends State<_PostsPage> {
     return Scaffold(
       appBar: AppBar(title: const Text('Posts')),
       body: ViewStateBuilder<List<Post>, ListBloc<Post>>(
-        cubit: listBloc,
+        bloc: listBloc,
         onLoading: (context) => const LoadingIndicator(),
         onSuccess: (context, posts) => PostsList(
           posts,
@@ -91,7 +91,7 @@ class _PostDetailPageState extends State<_PostDetailPage> {
     return Scaffold(
       appBar: AppBar(title: const Text('Post')),
       body: ViewStateBuilder<PostDetails, DetailsBloc<PostDetails, int>>(
-        cubit: detailsBloc,
+        bloc: detailsBloc,
         onLoading: (context) => const LoadingIndicator(),
         onSuccess: (context, post) => _PostDetailsContent(post),
         onEmpty: _showSnackbarAndPopPage,
@@ -102,7 +102,7 @@ class _PostDetailPageState extends State<_PostDetailPage> {
 
   Widget _showSnackbarAndPopPage(BuildContext context) {
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      Scaffold.of(context)
+      ScaffoldMessenger.of(context)
           .showSnackBar(
             const SnackBar(
               content: Text('Post not found!'),
@@ -157,6 +157,8 @@ class _Route {
 }
 
 class _Router {
+  const _Router._();
+
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
       case _Route.home:

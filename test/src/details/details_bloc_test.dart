@@ -9,7 +9,7 @@ void main() {
   DetailsBloc<String, int> detailsBloc;
 
   Future<void> thenExpectStates(Iterable<ViewState> states) async => expect(
-        detailsBloc,
+        detailsBloc.stream,
         emitsInOrder(states),
       );
 
