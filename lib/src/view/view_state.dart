@@ -7,7 +7,7 @@ abstract class ViewState extends Equatable {
   const ViewState();
 
   @override
-  List<Object> get props => [];
+  List<Object?> get props => [];
 }
 
 /// The initial view state.
@@ -35,7 +35,7 @@ class Refreshing<T> extends ViewState {
   const Refreshing(this.data);
 
   @override
-  List<Object> get props => [data];
+  List<Object?> get props => [data];
 
   @override
   String toString() => 'Refreshing: $data';
@@ -57,7 +57,7 @@ class Success<T> extends ViewState {
   const Success(this.data) : assert(data != null);
 
   @override
-  List<Object> get props => [data];
+  List<Object?> get props => [data];
 
   @override
   String toString() => 'Success: $data';
@@ -68,10 +68,10 @@ class Success<T> extends ViewState {
 class Failure extends ViewState {
   final dynamic error;
 
-  const Failure(this.error) : assert(error != null);
+  const Failure(this.error);
 
   @override
-  List<Object> get props => [error];
+  List<Object?> get props => [error];
 
   @override
   String toString() => 'Failure: $error';

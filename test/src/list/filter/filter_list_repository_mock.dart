@@ -25,8 +25,16 @@ class FailingFilterRepository<T, F> extends FilterListRepository<T, F> {
   FailingFilterRepository(this.error);
 
   @override
-  Future<List<T>> getAll() => Future.delayed(_delay, () => throw error);
+  Future<List<T>> getAll() => Future.delayed(
+        _delay,
+        // ignore: throw_of_invalid_type
+        () => throw error,
+      );
 
   @override
-  Future<List<T>> getBy(F filter) => Future.delayed(_delay, () => throw error);
+  Future<List<T>> getBy(F filter) => Future.delayed(
+        _delay,
+        // ignore: throw_of_invalid_type
+        () => throw error,
+      );
 }

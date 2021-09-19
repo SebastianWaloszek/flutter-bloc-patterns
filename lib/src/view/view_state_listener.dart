@@ -50,15 +50,15 @@ typedef ViewStateListenerCondition = bool Function(
 class ViewStateListener<T, B extends BlocBase<ViewState>>
     extends BlocListener<B, ViewState> {
   ViewStateListener({
-    Key key,
-    B bloc,
-    ViewStateListenerCondition listenWhen,
-    LoadingCallback onLoading,
-    RefreshingCallback<T> onRefreshing,
-    SuccessCallback<T> onSuccess,
-    EmptyCallback onEmpty,
-    ErrorCallback onError,
-    Widget child,
+    Key? key,
+    B? bloc,
+    ViewStateListenerCondition? listenWhen,
+    LoadingCallback? onLoading,
+    RefreshingCallback<T>? onRefreshing,
+    SuccessCallback<T>? onSuccess,
+    EmptyCallback? onEmpty,
+    ErrorCallback? onError,
+    Widget? child,
   }) : super(
           key: key,
           bloc: bloc,

@@ -14,14 +14,12 @@ import 'package:flutter_bloc_patterns/src/view/view_state_builder.dart';
 /// [T] - the type of the element.
 /// [I] - the type of id.
 class DetailsBloc<T, I> extends Bloc<DetailsEvent, ViewState> {
-  final DetailsRepository<T, I> _repository;
+  final DetailsRepository<T, I?> _repository;
 
-  DetailsBloc(this._repository)
-      : assert(_repository != null),
-        super(const Initial());
+  DetailsBloc(this._repository) : super(const Initial());
 
   /// Loads an element with given [id].
-  void loadElement([I id]) => add(LoadDetails(id));
+  void loadElement([I? id]) => add(LoadDetails(id));
 
   @override
   Stream<ViewState> mapEventToState(DetailsEvent event) async* {
@@ -30,7 +28,7 @@ class DetailsBloc<T, I> extends Bloc<DetailsEvent, ViewState> {
     }
   }
 
-  Stream<ViewState> _mapLoadDetails(I id) async* {
+  Stream<ViewState> _mapLoadDetails(I? id) async* {
     try {
       yield const Loading();
       final element = await _repository.getById(id);

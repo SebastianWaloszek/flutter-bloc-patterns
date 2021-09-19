@@ -39,12 +39,12 @@ const _someData = 1;
 final _someException = Exception('Damn, I have failed...');
 
 void main() {
-  Bloc<int, ViewState> bloc;
-  LoadingCallback loadingCallback;
-  SuccessCallback<int> successCallback;
-  RefreshingCallback<int> refreshCallback;
-  EmptyCallback emptyCallback;
-  ErrorCallback errorCallback;
+  late Bloc<int, ViewState> bloc;
+  late LoadingCallback loadingCallback;
+  late SuccessCallback<int> successCallback;
+  late RefreshingCallback<int> refreshCallback;
+  late EmptyCallback emptyCallback;
+  late ErrorCallback errorCallback;
 
   setUpAll(() {
     registerFallbackValue(ViewStateFake());
@@ -78,7 +78,8 @@ void main() {
       (WidgetTester tester) async {
     whenListen(
       bloc,
-      Stream.fromIterable(const [Initial(), Loading()]),
+      Stream.fromIterable(const [Loading()]),
+      initialState: const Initial(),
     );
 
     await tester.pumpWidget(makeTestableViewStateListener());
@@ -94,7 +95,8 @@ void main() {
       (WidgetTester tester) async {
     whenListen(
       bloc,
-      Stream.fromIterable(const [Initial(), Success(_someData)]),
+      Stream.fromIterable(const [Success(_someData)]),
+      initialState: const Initial(),
     );
 
     await tester.pumpWidget(makeTestableViewStateListener());
@@ -110,7 +112,8 @@ void main() {
       (WidgetTester tester) async {
     whenListen(
       bloc,
-      Stream.fromIterable(const [Initial(), Refreshing(_someData)]),
+      Stream.fromIterable(const [Refreshing(_someData)]),
+      initialState: const Initial(),
     );
 
     await tester.pumpWidget(makeTestableViewStateListener());
@@ -126,7 +129,8 @@ void main() {
       (WidgetTester tester) async {
     whenListen(
       bloc,
-      Stream.fromIterable(const [Initial(), Empty()]),
+      Stream.fromIterable(const [Empty()]),
+      initialState: const Initial(),
     );
 
     await tester.pumpWidget(makeTestableViewStateListener());
@@ -142,7 +146,8 @@ void main() {
       (WidgetTester tester) async {
     whenListen(
       bloc,
-      Stream.fromIterable([const Initial(), Failure(_someException)]),
+      Stream.fromIterable([Failure(_someException)]),
+      initialState: const Initial(),
     );
 
     await tester.pumpWidget(makeTestableViewStateListener());

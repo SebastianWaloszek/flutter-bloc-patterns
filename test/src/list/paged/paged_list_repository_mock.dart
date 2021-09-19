@@ -27,5 +27,6 @@ class FailingPagedRepository<T> implements PagedListRepository<T> {
   FailingPagedRepository(this.error);
 
   @override
+  // ignore: throw_of_invalid_type
   Future<List<T>> getAll(Page page) => throw error;
 }

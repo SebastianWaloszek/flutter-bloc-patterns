@@ -13,10 +13,10 @@ class PagedFilterPhotoRepository
   static const _photosUrl = '$baseUrl/photos';
 
   @override
-  Future<List<Photo>> getAll(Page page) => getBy(page, null);
+  Future<List<Photo>> getAll(Page page) => getBy(page);
 
   @override
-  Future<List<Photo>> getBy(Page page, Album album) async {
+  Future<List<Photo>> getBy(Page page, [Album album]) async {
     final response = await http.get(Uri.parse(_buildUrl(page, album)));
 
     if (response.statusCode != HttpStatus.ok) {

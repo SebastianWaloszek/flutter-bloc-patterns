@@ -11,12 +11,12 @@ abstract class DetailsEvent extends Equatable {
 ///
 /// [I] - the element's [id] type.
 class LoadDetails<I> extends DetailsEvent {
-  final I id;
+  final I? id;
 
   const LoadDetails([this.id]);
 
   @override
-  List<Object> get props => [id];
+  List<Object?> get props => [id];
 
   @override
   String toString() => 'LoadDetails: $id';

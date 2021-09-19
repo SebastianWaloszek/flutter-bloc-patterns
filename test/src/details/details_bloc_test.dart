@@ -6,7 +6,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'details_repository_mock.dart';
 
 void main() {
-  DetailsBloc<String, int> detailsBloc;
+  late DetailsBloc<String, int> detailsBloc;
 
   Future<void> thenExpectStates(Iterable<ViewState> states) async => expect(
         detailsBloc.stream,

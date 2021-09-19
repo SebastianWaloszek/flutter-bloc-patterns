@@ -18,7 +18,7 @@ class PagedList<T> extends Equatable {
   /// True if there are more pages, false otherwise.
   PagedList(List<T> elements, {this.hasReachedMax = false})
       : assert(
-          elements != null && elements.isNotEmpty,
+          elements.isNotEmpty,
           'Elements cannot be empty',
         ),
         elements = UnmodifiableListView(elements);

@@ -6,7 +6,7 @@ abstract class DetailsRepository<T, I> {
   /// Retrieves an element with given id. When there's no element matching the
   /// given [id] null should be returned or [ElementNotFoundException] should
   /// be thrown.
-  Future<T> getById(I id);
+  Future<T?> getById(I id);
 }
 
 /// Exception indicating that element with [id] was not found in the

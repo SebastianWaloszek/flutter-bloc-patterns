@@ -11,10 +11,10 @@ import 'paged_list_filter_repository_mock.dart';
 void main() {
   const pageSize = 3;
 
-  PagedListFilterBloc<int, int> bloc;
-  PagedListFilterRepository<int, int> repository;
+  late PagedListFilterBloc<int, int> bloc;
+  late PagedListFilterRepository<int, int> repository;
 
-  void loadingFirstPage({int filter}) =>
+  void loadingFirstPage({int? filter}) =>
       bloc.loadFirstPage(pageSize: pageSize, filter: filter);
 
   void loadingNextPage() => bloc.loadNextPage();

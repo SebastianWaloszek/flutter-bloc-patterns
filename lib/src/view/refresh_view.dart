@@ -10,17 +10,17 @@ import 'package:flutter/widgets.dart';
 /// executed. The indicator remains visible until the widget is rebuilt.
 class RefreshView extends StatefulWidget {
   final Widget child;
-  final VoidCallback onRefresh;
+  final VoidCallback? onRefresh;
   final double displacement;
-  final Color color;
-  final Color backgroundColor;
+  final Color? color;
+  final Color? backgroundColor;
   final ScrollNotificationPredicate notificationPredicate;
-  final String semanticsLabel;
-  final String semanticsValue;
+  final String? semanticsLabel;
+  final String? semanticsValue;
 
   const RefreshView({
-    Key key,
-    @required this.child,
+    Key? key,
+    required this.child,
     this.onRefresh,
     this.backgroundColor,
     this.color,
@@ -28,10 +28,7 @@ class RefreshView extends StatefulWidget {
     this.notificationPredicate = defaultScrollNotificationPredicate,
     this.semanticsLabel,
     this.semanticsValue,
-  })  : assert(child != null),
-        assert(displacement != null),
-        assert(notificationPredicate != null),
-        super(key: key);
+  }) : super(key: key);
 
   @override
   _RefreshViewState createState() => _RefreshViewState();
@@ -42,7 +39,7 @@ class _RefreshViewState extends State<RefreshView> {
 
   @override
   Widget build(BuildContext context) {
-    _refreshCompleter?.complete();
+    _refreshCompleter.complete();
     _refreshCompleter = Completer();
 
     return RefreshIndicator(

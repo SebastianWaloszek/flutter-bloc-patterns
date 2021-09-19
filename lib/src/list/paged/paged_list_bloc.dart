@@ -14,8 +14,7 @@ import 'package:flutter_bloc_patterns/src/view/view_state_builder.dart';
 /// [T] - the type of list elements.
 class PagedListBloc<T> extends PagedListFilterBloc<T, void> {
   PagedListBloc(PagedListRepository<T> repository)
-      : assert(repository != null),
-        super(_PagedListRepositoryAdapter<T>(repository));
+      : super(_PagedListRepositoryAdapter<T>(repository));
 }
 
 class _PagedListRepositoryAdapter<T>
@@ -28,6 +27,6 @@ class _PagedListRepositoryAdapter<T>
   Future<List<T>> getAll(Page page) => pagedListRepository.getAll(page);
 
   @override
-  Future<List<T>> getBy(Page page, void filter) =>
+  Future<List<T>> getBy(Page page, [void filter]) =>
       pagedListRepository.getAll(page);
 }
